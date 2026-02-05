@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ENTER — THE DOLL + GLO</title>
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@600;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+  <!-- GOOGLE FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;600;800&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
     * {
@@ -17,82 +18,71 @@
     }
 
     body {
-      background-color: #000;
+      background: #000;
       color: #fff;
       font-family: 'Montserrat', sans-serif;
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
+      text-align: center;
     }
 
     .container {
-      text-align: center;
+      width: 100%;
       max-width: 420px;
       padding: 60px 20px;
-      animation: fadeIn 1.8s ease forwards;
-      opacity: 0;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(24px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
     }
 
     h1 {
       font-family: 'Libre Franklin', sans-serif;
       font-size: 36px;
-      font-weight: 700;
-      letter-spacing: 0.22em;
-      margin-bottom: 30px;
+      letter-spacing: 0.25em;
+      margin-bottom: 12px;
     }
 
-    .statement {
+    .sub {
       font-size: 12px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+      letter-spacing: 0.2em;
       opacity: 0.6;
-      margin-bottom: 50px;
+      margin-bottom: 48px;
+      text-transform: uppercase;
     }
 
-    <form 
-  action="https://formspree.io/f/mdalnppd" 
-  method="POST"
-  data-redirect="https://thedollglo.com/confirmed.html"
->
+    form {
+      margin-bottom: 48px;
+    }
+
     input[type="email"] {
       width: 100%;
       background: transparent;
       border: none;
-      border-bottom: 2px solid #fff;
+      border-bottom: 1px solid #fff;
+      padding: 14px 0;
       color: #fff;
       font-size: 14px;
-      padding: 12px 0;
-      margin-bottom: 40px;
-      font-family: 'Montserrat', sans-serif;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.12em;
+      text-align: center;
+      outline: none;
     }
 
     input::placeholder {
-      color: rgba(255,255,255,0.55);
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.15em;
     }
 
     button {
+      margin-top: 36px;
+      width: 100%;
+      padding: 16px;
       background: transparent;
       border: 1px solid #fff;
       color: #fff;
-      padding: 14px 34px;
       font-family: 'Libre Franklin', sans-serif;
       font-size: 12px;
-      letter-spacing: 0.22em;
+      letter-spacing: 0.25em;
       cursor: pointer;
-      transition: all 0.35s ease;
+      transition: all 0.3s ease;
     }
 
     button:hover {
@@ -100,37 +90,56 @@
       color: #000;
     }
 
-    .micro {
-      margin-top: 50px;
+    .footer {
       font-size: 11px;
-      letter-spacing: 0.1em;
-      opacity: 0.55;
+      letter-spacing: 0.18em;
+      opacity: 0.45;
       text-transform: uppercase;
+      line-height: 1.6;
     }
   </style>
 </head>
 
 <body>
-  <div class="container">
-    <h1>ENTER</h1>
 
-    <div class="statement">
-      ACCESS IS RECORDED
-    </div>
+  <div class="container">
+
+    <h1>ENTER</h1>
+    <div class="sub">Access is recorded</div>
 
     <form action="https://formspree.io/f/mdalnppd" method="POST">
-      <input
-        type="email"
-        name="email"
-        placeholder="EMAIL ADDRESS"
+
+      <input 
+        type="email" 
+        name="email" 
+        placeholder="EMAIL ADDRESS" 
         required
-      />
+      >
+
+      <!-- FORCE REDIRECT -->
+      <input 
+        type="hidden" 
+        name="_next" 
+        value="https://thedollglo.com/confirmed.html"
+      >
+
+      <!-- SUBJECT -->
+      <input 
+        type="hidden" 
+        name="_subject" 
+        value="New Access Request — THE DOLL + GLO"
+      >
+
       <button type="submit">REQUEST ACCESS</button>
+
     </form>
 
-    <div class="micro">
-      SELECT RELEASES · LIMITED ACCESS
+    <div class="footer">
+      SELECT RELEASES · LIMITED ACCESS<br>
+      SILENCE IS INTENTIONAL
     </div>
+
   </div>
+
 </body>
 </html>
