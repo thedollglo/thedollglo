@@ -1,109 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
+  <meta charset="UTF-8">
   <title>THE DOLL + GLO</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@600;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
-
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      background-color: #000;
-      color: #fff;
-      font-family: 'Montserrat', sans-serif;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .container {
-      text-align: center;
-      max-width: 520px;
-      padding: 80px 24px;
-      animation: fadeIn 1.8s ease forwards;
-      opacity: 0;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    h1 {
-      font-family: 'Libre Franklin', sans-serif;
-      font-size: 48px;
-      font-weight: 700;
-      letter-spacing: 0.28em;
-      margin-bottom: 60px;
-    }
-
-    .statement {
-      font-size: 13px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      opacity: 0.65;
-      margin-bottom: 60px;
-      line-height: 1.9;
-    }
-
-    .enter {
-      display: inline-block;
-      text-decoration: none;
-      border: 1px solid #fff;
-      color: #fff;
-      padding: 18px 44px;
-      font-family: 'Libre Franklin', sans-serif;
-      font-size: 12px;
-      letter-spacing: 0.25em;
-      transition: all 0.35s ease;
-    }
-
-    .enter:hover {
-      background: #fff;
-      color: #000;
-    }
-
-    .micro {
-      margin-top: 80px;
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      opacity: 0.5;
-      text-transform: uppercase;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
-  <div class="container">
-    <h1>THE DOLL + GLO</h1>
+<body class="dark">
 
-    <div class="statement">
-      A PRIVATE HOUSE<br>
-      CURATED IN SILENCE<br>
-      RELEASED WITH INTENTION
-    </div>
+  <main class="center">
 
-    <a href="enter.html" class="enter">ENTER</a>
+    <h1 class="logo">
+      THE<br>DOLL +<br>GLO
+    </h1>
 
-    <div class="micro">
-      SELECT DROPS · LIMITED ACCESS · NO ANNOUNCEMENTS
-    </div>
-  </div>
+    <p class="tagline">
+      A private house<br>
+      curated in silence<br>
+      released with intention
+    </p>
+
+    <a href="enter.html" class="enter-button">ENTER</a>
+
+    <p class="micro muted">
+      Select drops · Limited access · No announcements
+    </p>
+
+  </main>
+
 </body>
 </html>
