@@ -2,76 +2,108 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title><h1>THE DOLL + GLO</h1></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>THE DOLL + GLO</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@600;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+
   <style>
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f7f4f2;
-      color: #111;
-      text-align: center;
+      padding: 0;
     }
+
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
     .container {
-      padding: 80px 20px;
-      max-width: 720px;
-      margin: auto;
+      text-align: center;
+      max-width: 520px;
+      padding: 80px 24px;
+      animation: fadeIn 1.8s ease forwards;
+      opacity: 0;
     }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
+      font-family: 'Libre Franklin', sans-serif;
+      font-size: 48px;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      margin-bottom: 60px;
     }
-    p {
-      font-size: 1.1rem;
-      line-height: 1.6;
+
+    .statement {
+      font-size: 13px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      opacity: 0.65;
+      margin-bottom: 60px;
+      line-height: 1.9;
     }
-    .tag {
-      margin-top: 30px;
-      font-style: italic;
-      opacity: 0.8;
+
+    .enter {
+      display: inline-block;
+      text-decoration: none;
+      border: 1px solid #fff;
+      color: #fff;
+      padding: 18px 44px;
+      font-family: 'Libre Franklin', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.25em;
+      transition: all 0.35s ease;
     }
-    footer {
+
+    .enter:hover {
+      background: #fff;
+      color: #000;
+    }
+
+    .micro {
       margin-top: 80px;
-      font-size: 0.9rem;
-      opacity: 0.6;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      opacity: 0.5;
+      text-transform: uppercase;
     }
   </style>
 </head>
+
 <body>
   <div class="container">
     <h1>THE DOLL + GLO</h1>
-    <p>
-      A beauty house rooted in ritual, intention, and glow.
-      <br /><br />
-      Select rituals. Limited quantities.
-    </p>
-<section style="margin-top: 3rem; text-align: center;">
-  
-      
-    <section style="margin-top: 3rem; text-align: center;">
-  <a
-    href="enter.html"
-    style="
-      font-size: 13px;
-      letter-spacing: 1px;
-      text-decoration: none;
-      color: inherit;
-      cursor: pointer;
-    "
-  >
-    Enter
-  </a>
-</section>
-    
-    <p class="tag">
-By invitation only.
-<br />
-Silence is intentional.
-</p>
 
-    <footer>
-      © THE DOLL + GLO
-    </footer>
+    <div class="statement">
+      A PRIVATE HOUSE<br>
+      CURATED IN SILENCE<br>
+      RELEASED WITH INTENTION
+    </div>
+
+    <a href="enter.html" class="enter">ENTER</a>
+
+    <div class="micro">
+      SELECT DROPS · LIMITED ACCESS · NO ANNOUNCEMENTS
+    </div>
   </div>
 </body>
 </html>
