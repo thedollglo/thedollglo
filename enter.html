@@ -75,8 +75,18 @@
   <p style="font-size: 0.9rem; opacity: 0.7;">
     Correspondence
   </p>
-
+<form action="https://formsubmit.co/tami@thedollglo.com" method="POST">
   <p style="font-size: 0.9rem; margin-bottom: 1.5rem;">
+    <input 
+  type="email" 
+  name="email" 
+  placeholder="Email address" 
+  required>
+    <button type="submit">Request Access</button>
+    <input type="hidden" name="_subject" value="New Correspondence Request">
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_template" value="table">
+<input type="hidden" name="_next" value="https://thedollglo.com/private">
     Provide an address to receive<br />
     first access when alignment opens.
   </p>
@@ -98,6 +108,18 @@
     />
     <br /><br />
     <button
+      <p id="microstate" style="display:none; font-style: italic;">
+  Received.
+      <script>
+  const form = document.querySelector("form");
+  const micro = document.getElementById("microstate");
+
+  form.addEventListener("submit", () => {
+    micro.style.display = "block";
+  });
+</script>
+      
+</p>
       type="submit"
       style="
         background: none;
