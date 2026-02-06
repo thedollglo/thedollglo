@@ -1,117 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;600;800&family=Montserrat:wght@300;400&display=swap');
+
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
-body.dark {
+body {
+  margin: 0;
   background: #000;
   color: #fff;
   font-family: 'Montserrat', sans-serif;
-  min-height: 100vh;
+  letter-spacing: 0.08em;
 }
 
-.center {
+.page {
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
   padding: 40px 20px;
 }
 
-.logo {
+h1 {
   font-family: 'Libre Franklin', sans-serif;
-  font-size: 3.5rem;
+  font-size: 42px;
+  font-weight: 800;
   letter-spacing: 0.3em;
-  line-height: 1.2;
-  margin-bottom: 40px;
-}
-
-.headline {
-  font-family: 'Libre Franklin', sans-serif;
-  font-size: 2rem;
-  letter-spacing: 0.4em;
   margin-bottom: 20px;
 }
 
-.subhead {
-  font-size: 0.9rem;
-  letter-spacing: 0.2em;
-  opacity: 0.7;
-  margin-bottom: 40px;
-}
-
-.tagline {
-  font-size: 0.8rem;
-  letter-spacing: 0.2em;
-  line-height: 2;
-  opacity: 0.6;
-  margin-bottom: 60px;
-}
-
-.enter-button,
-button {
-  border: 1px solid #fff;
-  background: transparent;
-  color: #fff;
-  padding: 15px 40px;
-  letter-spacing: 0.3em;
+h2 {
   font-family: 'Libre Franklin', sans-serif;
-  cursor: pointer;
-  text-decoration: none;
+  font-size: 24px;
+  letter-spacing: 0.25em;
+  margin-bottom: 12px;
 }
 
-.enter-button:hover,
+p {
+  font-size: 12px;
+  opacity: 0.6;
+  line-height: 1.8;
+  max-width: 480px;
+  margin: 0 auto 30px;
+}
+
+.button {
+  border: 1px solid #fff;
+  padding: 16px 42px;
+  text-decoration: none;
+  color: #fff;
+  display: inline-block;
+  margin-top: 20px;
+  font-size: 12px;
+  letter-spacing: 0.25em;
+}
+
+.button:hover {
+  background: #fff;
+  color: #000;
+}
+
+form {
+  margin-top: 40px;
+}
+
+input[type="email"] {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #fff;
+  color: #fff;
+  padding: 12px;
+  width: 260px;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 0.15em;
+}
+
+input::placeholder {
+  color: #777;
+}
+
+button {
+  margin-top: 28px;
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 14px 36px;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+}
+
 button:hover {
   background: #fff;
   color: #000;
 }
 
-.form {
-  width: 100%;
-  max-width: 400px;
-}
-
-input {
-  width: 100%;
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid #fff;
-  color: #fff;
-  padding: 15px 5px;
-  margin-bottom: 40px;
-  text-align: center;
-  letter-spacing: 0.2em;
-}
-
-.rule {
-  width: 40px;
-  height: 1px;
-  background: #fff;
+.footer {
+  margin-top: 60px;
+  font-size: 10px;
   opacity: 0.4;
-  margin: 40px auto;
-}
-
-.body {
-  font-size: 0.85rem;
-  opacity: 0.75;
-  line-height: 1.8;
-}
-
-.micro {
-  font-size: 0.7rem;
-  letter-spacing: 0.2em;
-  margin-top: 40px;
-}
-
-.muted {
-  opacity: 0.4;
-}
-
-.signature {
-  font-family: 'Libre Franklin', sans-serif;
-  letter-spacing: 0.3em;
-  margin-top: 20px;
 }
