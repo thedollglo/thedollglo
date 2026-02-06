@@ -1,51 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Enter — THE DOLL + GLO</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@600;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+  <title>ENTER — THE DOLL + GLO</title>
   <link rel="stylesheet" href="style.css">
 </head>
+<body>
+  <div class="page">
+    <div>
+      <h2>ENTER</h2>
 
-<body class="dark">
+      <p>ACCESS IS RECORDED</p>
 
-  <main class="center">
+      <form action="https://formspree.io/f/mdalnppd" method="POST">
+        <input type="email" name="email" placeholder="EMAIL ADDRESS" required>
 
-    <h1 class="headline">ENTER</h1>
+        <!-- THIS LINE IS CRITICAL -->
+        <input type="hidden" name="_redirect" value="https://thedollglo.com/confirmed.html">
 
-    <p class="subhead">Access is recorded.</p>
+        <button type="submit">REQUEST ACCESS</button>
+      </form>
 
-    <form
-      action="https://formspree.io/f/mdalnppd"
-      method="POST"
-      class="form"
-    >
-
-      <input
-        type="email"
-        name="email"
-        placeholder="EMAIL ADDRESS"
-        required
-      >
-
-      <!-- THIS IS NON-NEGOTIABLE -->
-      <input
-        type="hidden"
-        name="_redirect"
-        value="https://thedollglo.com/confirmed.html"
-      >
-
-      <button type="submit">REQUEST ACCESS</button>
-
-    </form>
-
-    <p class="micro muted">
-      Select releases · Limited access
-    </p>
-
-  </main>
-
+      <div class="footer">
+        SELECT RELEASES · LIMITED ACCESS
+      </div>
+    </div>
+  </div>
 </body>
 </html>
