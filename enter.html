@@ -1,28 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>ENTER — THE DOLL + GLO</title>
+  <meta charset="UTF-8">
+  <title>Request Access</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="page">
-    <div>
-      <h2>ENTER</h2>
+  <div class="container">
+    <h1>ENTER</h1>
 
-      <p>ACCESS IS RECORDED</p>
+    <div class="subtext">
+      ACCESS IS RECORDED
+    </div>
 
-      <form action="https://formspree.io/f/mdalnppd" method="POST">
-        <input type="email" name="email" placeholder="EMAIL ADDRESS" required>
+    <form action="https://formspree.io/f/mdalnppd" method="POST">
+      <input type="email" name="email" placeholder="EMAIL ADDRESS" required>
 
-        <!-- THIS LINE IS CRITICAL -->
-        <input type="hidden" name="_next" value="https://thedollglo.com/confirmed.html">
+      <input type="hidden" name="_next" value="https://thedollglo.com/confirmed.html">
 
-        <button type="submit">REQUEST ACCESS</button>
-      </form>
+      <button type="submit">REQUEST ACCESS</button>
+    </form>
 
-      <div class="footer">
-        SELECT RELEASES · LIMITED ACCESS
-      </div>
+    <div class="subtext" style="margin-top:40px;">
+      SELECT RELEASES · LIMITED ACCESS
     </div>
   </div>
 </body>
