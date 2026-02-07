@@ -117,3 +117,53 @@ body.black {
     animation: none;
   }
 }
+body {
+  background: var(--off-white);
+  color: var(--black);
+  font-family: var(--sans);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+}
+
+.container {
+  margin-top: 20vh;
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+}
+
+h1 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  margin-bottom: 32px;
+}
+
+input {
+  width: 100%;
+  padding: 14px 16px;
+  font-family: var(--sans);
+  font-size: 14px;
+  border: 1px solid var(--soft-gray);
+  border-radius: 8px;
+  outline: none;
+  margin-bottom: 20px;
+}
+
+input::placeholder {
+  color: var(--muted-gray);
+}
+
+button {
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 12px 28px;
+  border-radius: 999px;
+  border: none;
+  background: #EAEAEA;
+  cursor: pointer;
+}
