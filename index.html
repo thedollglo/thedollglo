@@ -1,156 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>THE DOLL + GLO — Private Access</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8" />
+<title>THE DOLL + GLO</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@600;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@700&family=Montserrat:wght@400&display=swap" rel="stylesheet">
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<style>
+body {
+  margin: 0;
+  background: #fff;
+  color: #000;
+  font-family: 'Montserrat', sans-serif;
+}
 
-    body {
-      background: #ffffff;
-      color: #000000;
-      font-family: 'Montserrat', sans-serif;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+.screen {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
 
-    .container {
-      text-align: center;
-      width: 100%;
-      max-width: 420px;
-      padding: 20px;
-    }
+.container {
+  width: 90%;
+  max-width: 420px;
+}
 
-    h1 {
-      font-family: 'Libre Franklin', sans-serif;
-      font-size: 40px;
-      letter-spacing: 1px;
-      margin-bottom: 12px;
-    }
+h1 {
+  font-family: 'Libre Franklin', sans-serif;
+  font-size: 42px;
+  margin-bottom: 10px;
+}
 
-    .subtext {
-      font-size: 16px;
-      margin-bottom: 32px;
-    }
+.sub {
+  margin-bottom: 28px;
+}
 
-    input {
-      width: 100%;
-      padding: 14px;
-      font-size: 16px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      text-align: center;
-      margin-bottom: 20px;
-      outline: none;
-    }
+input {
+  width: 100%;
+  padding: 16px;
+  font-size: 18px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
 
-    button {
-      background: #000;
-      color: #fff;
-      border: none;
-      padding: 14px 36px;
-      font-size: 16px;
-      border-radius: 999px;
-      cursor: pointer;
-    }
+button {
+  margin-top: 18px;
+  padding: 14px 40px;
+  border-radius: 999px;
+  border: none;
+  background: #000;
+  color: #fff;
+  font-size: 16px;
+}
 
-    button:hover {
-      opacity: 0.9;
-    }
+.error {
+  margin-top: 16px;
+  font-size: 14px;
+  opacity: 0.5;
+}
 
-    /* RECEIVED SCREEN */
-    .received {
-      display: none;
-      background: #000;
-      color: #fff;
-      height: 100vh;
-      width: 100vw;
-      position: fixed;
-      top: 0;
-      left: 0;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      text-align: center;
-    }
+#received {
+  display: none;
+  background: #000;
+  color: #fff;
+}
 
-    .received h2 {
-      font-family: 'Libre Franklin', sans-serif;
-      font-size: 36px;
-      margin-bottom: 12px;
-    }
+#received h2 {
+  font-family: 'Libre Franklin', sans-serif;
+  font-size: 36px;
+}
 
-    .received p {
-      font-size: 14px;
-      font-family: 'Montserrat', sans-serif;
-      opacity: 0.8;
-    }
+#received p {
+  font-size: 14px;
+  opacity: 0.8;
+}
 
-    iframe {
-      display: none;
-    }
-  </style>
+/* TALLY IS COMPLETELY HIDDEN */
+iframe {
+  display: none;
+}
+</style>
 </head>
 
 <body>
 
-  <!-- ENTRY SCREEN -->
-  <div class="container" id="gate">
+<!-- ACCESS GATE -->
+<div class="screen" id="gate">
+  <div class="container">
     <h1>THE DOLL + GLO</h1>
-    <div class="subtext">Studio access required.</div>
+    <div class="sub">Studio access required.</div>
 
     <input
+      id="code"
       type="password"
-      id="studioCode"
-      placeholder="Studio Code"
+      placeholder="Enter Studio Code"
       autocomplete="off"
+      autocorrect="off"
+      autocapitalize="off"
+      spellcheck="false"
+      inputmode="none"
     />
 
-    <button onclick="checkCode()">Enter</button>
+    <button onclick="unlock()">Enter</button>
+    <div class="error" id="error"></div>
   </div>
+</div>
 
-  <!-- RECEIVED SCREEN -->
-  <div class="received" id="received">
+<!-- RECEIVED -->
+<div class="screen" id="received">
+  <div>
     <h2>RECEIVED</h2>
     <p>Your signal has been acknowledged.</p>
   </div>
+</div>
 
-  <!-- TALLY EMBED (silent trigger) -->
-  <iframe
-    id="tallyFrame"
-    src="https://tally.so/r/jaQe84"
-    title="Private Access Log">
-  </iframe>
+<!-- TALLY EMBED (HIDDEN) -->
+<iframe
+  id="tally"
+  src="https://tally.so/r/jaQe84"
+  title="Tally Hidden"
+></iframe>
 
-  <script>
-    function checkCode() {
-      const input = document.getElementById('studioCode').value;
+<script>
+function unlock() {
+  const input = document.getElementById('code').value;
+  const error = document.getElementById('error');
 
-      if (input === 'STUDIO.001') {
-        document.getElementById('gate').style.display = 'none';
-        document.getElementById('received').style.display = 'flex';
+  if (input === 'STUDIO.001') {
+    document.getElementById('gate').style.display = 'none';
+    document.getElementById('received').style.display = 'flex';
 
-        // Fire Tally after transition
-        setTimeout(() => {
-          document.getElementById('tallyFrame').src += '?submitted=true';
-        }, 500);
-      } else {
-        document.getElementById('studioCode').value = '';
-        document.getElementById('studioCode').placeholder = 'Invalid code';
-      }
-    }
-  </script>
+    // silent tally submission trigger
+    document.getElementById('tally').src += '?submitted=1';
+  } else {
+    error.textContent = 'Access not granted.';
+  }
+}
+</script>
 
 </body>
 </html>
