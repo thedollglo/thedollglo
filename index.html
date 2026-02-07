@@ -1,16 +1,20 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>THE DOLL + GLO</title>
 
+<!-- Brand Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;600;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+
 <style>
 html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  font-family: "Times New Roman", serif;
 }
 
 /* ---------- STATES ---------- */
@@ -31,22 +35,28 @@ html, body {
 /* ---------- GATE ---------- */
 #gate {
   background: #ffffff;
+  color: #000;
 }
 
 h1 {
+  font-family: 'Libre Franklin', sans-serif;
   font-size: 42px;
+  font-weight: 600;
   letter-spacing: 1px;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .subtitle {
-  font-size: 16px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
   margin-bottom: 32px;
 }
 
 input {
+  font-family: 'Montserrat', sans-serif;
   padding: 14px;
-  font-size: 16px;
+  font-size: 14px;
   width: 260px;
   border-radius: 6px;
   border: 1px solid #ccc;
@@ -54,13 +64,16 @@ input {
 }
 
 button {
-  margin-top: 16px;
-  padding: 12px 36px;
+  margin-top: 18px;
+  padding: 12px 38px;
   border-radius: 999px;
   border: none;
   background: #000;
   color: #fff;
-  font-size: 16px;
+  font-family: 'Libre Franklin', sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
 }
 
 /* ---------- RECEIVED ---------- */
@@ -70,13 +83,17 @@ button {
 }
 
 #received h2 {
+  font-family: 'Libre Franklin', sans-serif;
+  font-weight: 600;
   letter-spacing: 2px;
   margin-bottom: 10px;
 }
 
 #received p {
-  font-size: 14px;
-  opacity: 0.8;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  opacity: 0.75;
 }
 </style>
 </head>
@@ -98,7 +115,7 @@ button {
   <p>Your signal has been acknowledged.</p>
 </div>
 
-<!-- TALLY (HIDDEN SIGNAL) -->
+<!-- TALLY (SILENT SIGNAL) -->
 <iframe
   id="tallyFrame"
   src="https://tally.so/r/jaQe84"
@@ -110,7 +127,7 @@ function checkCode() {
   const code = document.getElementById("codeInput").value.trim();
 
   if (code === "STUDIO.001") {
-    // fire tally
+    // trigger tally submission
     document.getElementById("tallyFrame").src += "";
 
     // swap screens
