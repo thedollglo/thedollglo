@@ -2,83 +2,161 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>THE DOLL + GLO — Studio Access</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>THE DOLL + GLO — Studio</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+
   <style>
     body {
       margin: 0;
-      height: 100vh;
       background: #ffffff;
-      color: #000000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: Arial, Helvetica, sans-serif;
+      color: #000;
+      font-family: 'Montserrat', sans-serif;
     }
 
-    .gate {
-      text-align: left;
+    .container {
       max-width: 420px;
-      padding: 24px;
+      padding: 80px 24px;
     }
 
-    .gate p {
-      font-size: 14px;
-      margin-bottom: 12px;
+    h1 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 36px;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 32px;
+    }
+
+    h1 span {
+      display: block;
+      font-weight: 400;
+      font-size: 22px;
+      margin-top: 6px;
     }
 
     input {
       width: 100%;
-      padding: 10px;
+      padding: 14px 16px;
       font-size: 14px;
-      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      outline: none;
+      margin-bottom: 16px;
+      font-family: 'Montserrat', sans-serif;
     }
 
     button {
-      padding: 10px 14px;
-      font-size: 14px;
+      background: #000;
+      color: #fff;
+      border: none;
+      padding: 12px 28px;
+      font-size: 13px;
+      font-weight: 500;
+      border-radius: 999px;
       cursor: pointer;
+      transition: opacity 0.2s ease;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    button:hover {
+      opacity: 0.85;
     }
 
     .error {
-      margin-top: 10px;
-      font-size: 13px;
-      color: #000;
+      margin-top: 14px;
+      font-size: 12px;
+      color: #999;
       display: none;
+    }
+
+    /* RECEIVED SCREEN */
+    .received {
+      background: #000;
+      color: #fff;
+      min-height: 100vh;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 24px;
+    }
+
+    .received h2 {
+      font-family: 'Libre Baskerville', serif;
+      letter-spacing: 0.12em;
+      font-size: 22px;
+      margin-bottom: 16px;
+    }
+
+    .received p {
+      font-size: 14px;
+      opacity: 0.75;
+      line-height: 1.6;
+      margin-bottom: 80px;
+    }
+
+    .received .quiet {
+      font-size: 12px;
+      opacity: 0.4;
     }
   </style>
 </head>
+
 <body>
-  <div class="container">
+
+  <!-- ACCESS SCREEN -->
+  <div class="container" id="gate">
     <h1>
-      THE DOLL + GLO<br />
+      THE DOLL + GLO
       <span>Studio access required.</span>
     </h1>
 
     <input
-      id="codeInput"
       type="password"
+      id="codeInput"
       placeholder="Enter Studio Code"
+      autocomplete="off"
     />
 
     <button onclick="checkCode()">Enter</button>
 
-    <p class="error" id="errorMsg">Access not granted.</p>
+    <div class="error" id="error">Access not granted.</div>
+  </div>
+
+  <!-- RECEIVED SCREEN -->
+  <div class="received" id="received">
+    <div>
+      <h2>RECEIVED</h2>
+      <p>
+        Your signal has been acknowledged.<br />
+        If aligned, access will follow.
+      </p>
+      <div class="quiet">
+        Silence is not absence.<br />
+        It is consideration.
+      </div>
+    </div>
   </div>
 
   <script>
-    const encodedCode = "U1RVRElPLjAwMQ==";
+    // Obscured studio code (base64)
+    const encodedCode = "U1REVURJTy4wMDE="; // STUDIO.001
 
     function checkCode() {
       const input = document.getElementById("codeInput").value;
       const decoded = atob(encodedCode);
+      const error = document.getElementById("error");
 
       if (input === decoded) {
-        window.location.href = "confirmed.html";
+        document.getElementById("gate").style.display = "none";
+        document.getElementById("received").style.display = "flex";
       } else {
-        document.getElementById("errorMsg").style.display = "block";
+        error.style.display = "block";
       }
     }
   </script>
+
 </body>
 </html>
