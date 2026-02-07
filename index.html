@@ -1,143 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>THE DOLL + GLO</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<!-- Brand Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;600;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+  <title>THE DOLL + GLO — Private</title>
 
-<style>
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@600;700&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
 
-/* ---------- STATES ---------- */
-.screen {
-  display: none;
-  height: 100vh;
-  width: 100vw;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
-}
+  <!-- Tally Embed -->
+  <script async src="https://tally.so/widgets/embed.js"></script>
 
-.screen.active {
-  display: flex;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-/* ---------- GATE ---------- */
-#gate {
-  background: #ffffff;
-  color: #000;
-}
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: #ffffff;
+      color: #000000;
+    }
 
-h1 {
-  font-family: 'Libre Franklin', sans-serif;
-  font-size: 42px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  margin-bottom: 6px;
-}
+    .container {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      text-align: center;
+    }
 
-.subtitle {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 14px;
-  font-weight: 300;
-  margin-bottom: 32px;
-}
+    h1 {
+      font-family: 'Libre Franklin', sans-serif;
+      font-size: 42px;
+      letter-spacing: 0.04em;
+      margin-bottom: 8px;
+    }
 
-input {
-  font-family: 'Montserrat', sans-serif;
-  padding: 14px;
-  font-size: 14px;
-  width: 260px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  text-align: center;
-}
+    .subtitle {
+      font-size: 16px;
+      margin-bottom: 28px;
+    }
 
-button {
-  margin-top: 18px;
-  padding: 12px 38px;
-  border-radius: 999px;
-  border: none;
-  background: #000;
-  color: #fff;
-  font-family: 'Libre Franklin', sans-serif;
-  font-size: 14px;
-  letter-spacing: 0.5px;
-  cursor: pointer;
-}
+    input {
+      width: 100%;
+      max-width: 320px;
+      padding: 14px 16px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      margin-bottom: 16px;
+      text-align: center;
+    }
 
-/* ---------- RECEIVED ---------- */
-#received {
-  background: #000;
-  color: #fff;
-}
+    button {
+      padding: 14px 36px;
+      font-size: 16px;
+      border-radius: 999px;
+      border: none;
+      background: #000;
+      color: #fff;
+      cursor: pointer;
+    }
 
-#received h2 {
-  font-family: 'Libre Franklin', sans-serif;
-  font-weight: 600;
-  letter-spacing: 2px;
-  margin-bottom: 10px;
-}
+    /* RECEIVED SCREEN */
+    .received {
+      display: none;
+      min-height: 100vh;
+      background: #000;
+      color: #fff;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+    }
 
-#received p {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 13px;
-  font-weight: 300;
-  opacity: 0.75;
-}
-</style>
+    .received h2 {
+      font-family: 'Libre Franklin', sans-serif;
+      font-size: 28px;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+
+    .received p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      opacity: 0.85;
+    }
+
+    /* Hidden Tally */
+    .tally-hidden {
+      display: none;
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- GATE SCREEN -->
-<div id="gate" class="screen active">
-  <h1>THE DOLL + GLO</h1>
-  <div class="subtitle">Studio access required.</div>
+  <!-- ACCESS SCREEN -->
+  <div class="container" id="accessScreen">
+    <h1>THE DOLL + GLO</h1>
+    <div class="subtitle">Studio access required.</div>
 
-  <input id="codeInput" placeholder="Enter Studio Code" />
-  <button onclick="checkCode()">Enter</button>
-</div>
+    <input
+      type="text"
+      id="studioCode"
+      placeholder="Enter Studio Code"
+      autocomplete="off"
+    />
 
-<!-- RECEIVED SCREEN -->
-<div id="received" class="screen">
-  <h2>RECEIVED</h2>
-  <p>Your signal has been acknowledged.</p>
-</div>
+    <button onclick="handleAccess()">Enter</button>
+  </div>
 
-<!-- TALLY (SILENT SIGNAL) -->
-<iframe
-  id="tallyFrame"
-  src="https://tally.so/r/jaQe84"
-  style="display:none;">
-</iframe>
+  <!-- RECEIVED SCREEN -->
+  <div class="received" id="receivedScreen">
+    <h2>RECEIVED</h2>
+    <p>Your signal has been acknowledged.</p>
+  </div>
 
-<script>
-function checkCode() {
-  const code = document.getElementById("codeInput").value.trim();
+  <!-- TALLY FORM (HIDDEN) -->
+  <div class="tally-hidden">
+    <iframe
+      data-tally-src="https://tally.so/embed/TALLY_FORM_ID?hideTitle=1&transparentBackground=1"
+      loading="lazy"
+      width="0"
+      height="0"
+      frameborder="0"
+      title="Private Access Signal">
+    </iframe>
+  </div>
 
-  if (code === "STUDIO.001") {
-    // trigger tally submission
-    document.getElementById("tallyFrame").src += "";
+  <script>
+    function handleAccess() {
+      const code = document.getElementById('studioCode').value.trim();
 
-    // swap screens
-    document.getElementById("gate").classList.remove("active");
-    document.getElementById("received").classList.add("active");
-  } else {
-    alert("Access denied.");
-  }
-}
-</script>
+      if (code === "STUDIO.001") {
+        document.getElementById('accessScreen').style.display = "none";
+        document.getElementById('receivedScreen').style.display = "flex";
+
+        // Fire Tally submission silently
+        const iframe = document.querySelector("iframe[data-tally-src]");
+        iframe.src = iframe.getAttribute("data-tally-src") + "&ts=" + Date.now();
+      } else {
+        alert("Invalid studio code.");
+      }
+    }
+  </script>
 
 </body>
 </html>
