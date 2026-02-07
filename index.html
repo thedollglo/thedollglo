@@ -3,115 +3,72 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>THE DOLL + GLO — Studio</title>
+  <title>THE DOLL + GLO</title>
 
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
 
   <style>
     body {
       margin: 0;
+      padding: 0;
       background: #ffffff;
-      color: #000;
+      color: #000000;
       font-family: 'Montserrat', sans-serif;
     }
 
     .container {
-      max-width: 420px;
+      max-width: 520px;
       padding: 80px 24px;
     }
 
     h1 {
       font-family: 'Libre Baskerville', serif;
-      font-size: 36px;
-      line-height: 1.15;
-      letter-spacing: -0.02em;
-      margin-bottom: 32px;
+      font-size: 44px;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 8px;
     }
 
-    h1 span {
-      display: block;
-      font-weight: 400;
+    .sub {
+      font-family: 'Libre Baskerville', serif;
       font-size: 22px;
-      margin-top: 6px;
+      margin-bottom: 40px;
     }
 
     input {
       width: 100%;
       padding: 14px 16px;
-      font-size: 14px;
+      font-size: 16px;
+      border-radius: 8px;
       border: 1px solid #ddd;
-      border-radius: 6px;
-      outline: none;
       margin-bottom: 16px;
-      font-family: 'Montserrat', sans-serif;
+      box-sizing: border-box;
     }
 
     button {
-      background: #000;
+      background: #1a1a1a;
       color: #fff;
       border: none;
-      padding: 12px 28px;
-      font-size: 13px;
-      font-weight: 500;
       border-radius: 999px;
+      padding: 14px 32px;
+      font-size: 16px;
       cursor: pointer;
-      transition: opacity 0.2s ease;
-      font-family: 'Montserrat', sans-serif;
-    }
-
-    button:hover {
-      opacity: 0.85;
     }
 
     .error {
-      margin-top: 14px;
-      font-size: 12px;
+      margin-top: 16px;
+      font-size: 14px;
       color: #999;
       display: none;
-    }
-
-    /* RECEIVED SCREEN */
-    .received {
-      background: #000;
-      color: #fff;
-      min-height: 100vh;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 40px 24px;
-    }
-
-    .received h2 {
-      font-family: 'Libre Baskerville', serif;
-      letter-spacing: 0.12em;
-      font-size: 22px;
-      margin-bottom: 16px;
-    }
-
-    .received p {
-      font-size: 14px;
-      opacity: 0.75;
-      line-height: 1.6;
-      margin-bottom: 80px;
-    }
-
-    .received .quiet {
-      font-size: 12px;
-      opacity: 0.4;
     }
   </style>
 </head>
 
 <body>
-
-  <!-- ACCESS SCREEN -->
-  <div class="container" id="gate">
-    <h1>
-      THE DOLL + GLO
-      <span>Studio access required.</span>
-    </h1>
+  <div class="container">
+    <h1>THE DOLL + GLO</h1>
+    <div class="sub">Studio access required.</div>
 
     <input
       type="password"
@@ -122,41 +79,20 @@
 
     <button onclick="checkCode()">Enter</button>
 
-    <div class="error" id="error">Access not granted.</div>
-  </div>
-
-  <!-- RECEIVED SCREEN -->
-  <div class="received" id="received">
-    <div>
-      <h2>RECEIVED</h2>
-      <p>
-        Your signal has been acknowledged.<br />
-        If aligned, access will follow.
-      </p>
-      <div class="quiet">
-        Silence is not absence.<br />
-        It is consideration.
-      </div>
-    </div>
+    <div id="error" class="error">Access not granted.</div>
   </div>
 
   <script>
-    // Obscured studio code (base64)
-    const encodedCode = "U1REVURJTy4wMDE="; // STUDIO.001
-
     function checkCode() {
-      const input = document.getElementById("codeInput").value;
-      const decoded = atob(encodedCode);
-      const error = document.getElementById("error");
+      const input = document.getElementById("codeInput").value.trim();
+      const correctCode = "STUDIO.001";
 
-      if (input === decoded) {
-        document.getElementById("gate").style.display = "none";
-        document.getElementById("received").style.display = "flex";
+      if (input === correctCode) {
+        window.location.href = "confirmed.html";
       } else {
-        error.style.display = "block";
+        document.getElementById("error").style.display = "block";
       }
     }
   </script>
-
 </body>
 </html>
