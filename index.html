@@ -1,7 +1,86 @@
-THE DOLL + GLO
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>THE DOLL + GLO — Studio Access</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: #ffffff;
+      color: #000000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Arial, Helvetica, sans-serif;
+    }
 
-Studio access required.
+    .gate {
+      text-align: left;
+      max-width: 420px;
+      padding: 24px;
+    }
 
-[ Enter Studio Code ]
+    .gate p {
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
 
-Access not granted.
+    input {
+      width: 100%;
+      padding: 10px;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      padding: 10px 14px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .error {
+      margin-top: 10px;
+      font-size: 13px;
+      color: #000;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="gate">
+    <p>THE DOLL + GLO Studio access required.</p>
+
+    <input
+      type="password"
+      id="codeInput"
+      placeholder="Enter Studio Code"
+    />
+
+    <button onclick="checkCode()">Enter</button>
+
+    <div class="error" id="errorMsg">
+      Access not granted.
+    </div>
+  </div>
+
+  <script>
+    // Obscured studio code (base64)
+    const encodedCode = "U1RVRElPLjAwMQ=="; // STUDIO.001
+
+    function checkCode() {
+      const input = document.getElementById("codeInput").value.trim();
+      const decodedCode = atob(encodedCode);
+
+      if (input === decodedCode) {
+        window.location.href = "confirmed.html";
+      } else {
+        document.getElementById("errorMsg").style.display = "block";
+      }
+    }
+  </script>
+
+</body>
+</html>
