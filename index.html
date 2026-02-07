@@ -2,77 +2,83 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <title>THE DOLL + GLO — Private Access</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>THE DOLL + GLO — Private</title>
-
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@600;700&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
-
-  <!-- Tally Embed -->
-  <script async src="https://tally.so/widgets/embed.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@600;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 
   <style>
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      margin: 0;
-      font-family: 'Montserrat', sans-serif;
       background: #ffffff;
       color: #000000;
+      font-family: 'Montserrat', sans-serif;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .container {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
       text-align: center;
+      width: 100%;
+      max-width: 420px;
+      padding: 20px;
     }
 
     h1 {
       font-family: 'Libre Franklin', sans-serif;
-      font-size: 42px;
-      letter-spacing: 0.04em;
-      margin-bottom: 8px;
+      font-size: 40px;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
     }
 
-    .subtitle {
+    .subtext {
       font-size: 16px;
-      margin-bottom: 28px;
+      margin-bottom: 32px;
     }
 
     input {
       width: 100%;
-      max-width: 320px;
-      padding: 14px 16px;
+      padding: 14px;
       font-size: 16px;
       border: 1px solid #ccc;
-      border-radius: 10px;
-      margin-bottom: 16px;
+      border-radius: 6px;
       text-align: center;
+      margin-bottom: 20px;
+      outline: none;
     }
 
     button {
+      background: #000;
+      color: #fff;
+      border: none;
       padding: 14px 36px;
       font-size: 16px;
       border-radius: 999px;
-      border: none;
-      background: #000;
-      color: #fff;
       cursor: pointer;
+    }
+
+    button:hover {
+      opacity: 0.9;
     }
 
     /* RECEIVED SCREEN */
     .received {
       display: none;
-      min-height: 100vh;
       background: #000;
       color: #fff;
+      height: 100vh;
+      width: 100vw;
+      position: fixed;
+      top: 0;
+      left: 0;
       align-items: center;
       justify-content: center;
       flex-direction: column;
@@ -81,19 +87,17 @@
 
     .received h2 {
       font-family: 'Libre Franklin', sans-serif;
-      font-size: 28px;
-      letter-spacing: 0.08em;
-      margin-bottom: 8px;
+      font-size: 36px;
+      margin-bottom: 12px;
     }
 
     .received p {
-      font-family: 'Montserrat', sans-serif;
       font-size: 14px;
-      opacity: 0.85;
+      font-family: 'Montserrat', sans-serif;
+      opacity: 0.8;
     }
 
-    /* Hidden Tally */
-    .tally-hidden {
+    iframe {
       display: none;
     }
   </style>
@@ -101,52 +105,49 @@
 
 <body>
 
-  <!-- ACCESS SCREEN -->
-  <div class="container" id="accessScreen">
+  <!-- ENTRY SCREEN -->
+  <div class="container" id="gate">
     <h1>THE DOLL + GLO</h1>
-    <div class="subtitle">Studio access required.</div>
+    <div class="subtext">Studio access required.</div>
 
     <input
-      type="text"
+      type="password"
       id="studioCode"
-      placeholder="Enter Studio Code"
+      placeholder="Studio Code"
       autocomplete="off"
     />
 
-    <button onclick="handleAccess()">Enter</button>
+    <button onclick="checkCode()">Enter</button>
   </div>
 
   <!-- RECEIVED SCREEN -->
-  <div class="received" id="receivedScreen">
+  <div class="received" id="received">
     <h2>RECEIVED</h2>
     <p>Your signal has been acknowledged.</p>
   </div>
 
-  <!-- TALLY FORM (HIDDEN) -->
-  <div class="tally-hidden">
-    <iframe
-      data-tally-src="https://tally.so/embed/TALLY_FORM_ID?hideTitle=1&transparentBackground=1"
-      loading="lazy"
-      width="0"
-      height="0"
-      frameborder="0"
-      title="Private Access Signal">
-    </iframe>
-  </div>
+  <!-- TALLY EMBED (silent trigger) -->
+  <iframe
+    id="tallyFrame"
+    src="https://tally.so/r/jaQe84"
+    title="Private Access Log">
+  </iframe>
 
   <script>
-    function handleAccess() {
-      const code = document.getElementById('studioCode').value.trim();
+    function checkCode() {
+      const input = document.getElementById('studioCode').value;
 
-      if (code === "STUDIO.001") {
-        document.getElementById('accessScreen').style.display = "none";
-        document.getElementById('receivedScreen').style.display = "flex";
+      if (input === 'STUDIO.001') {
+        document.getElementById('gate').style.display = 'none';
+        document.getElementById('received').style.display = 'flex';
 
-        // Fire Tally submission silently
-        const iframe = document.querySelector("iframe[data-tally-src]");
-        iframe.src = iframe.getAttribute("data-tally-src") + "&ts=" + Date.now();
+        // Fire Tally after transition
+        setTimeout(() => {
+          document.getElementById('tallyFrame').src += '?submitted=true';
+        }, 500);
       } else {
-        alert("Invalid studio code.");
+        document.getElementById('studioCode').value = '';
+        document.getElementById('studioCode').placeholder = 'Invalid code';
       }
     }
   </script>
