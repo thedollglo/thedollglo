@@ -49,33 +49,36 @@
   </style>
 </head>
 <body>
-  <div class="container"><h1>
-  THE DOLL + GLO<br />
-  <span>Studio access required.</span>
-</h1>
-    <input type="password" placeholder="Enter Studio Code" />
-    <button>Enter</button>
-  </div>
-</body>
-      Access not granted.
-    </div>
+  <div class="container">
+    <h1>
+      THE DOLL + GLO<br />
+      <span>Studio access required.</span>
+    </h1>
+
+    <input
+      id="codeInput"
+      type="password"
+      placeholder="Enter Studio Code"
+    />
+
+    <button onclick="checkCode()">Enter</button>
+
+    <p class="error" id="errorMsg">Access not granted.</p>
   </div>
 
   <script>
-    // Obscured studio code (base64)
-    const encodedCode = "U1RVRElPLjAwMQ=="; // STUDIO.001
+    const encodedCode = "U1RVRElPLjAwMQ==";
 
     function checkCode() {
-      const input = document.getElementById("codeInput").value.trim();
-      const decodedCode = atob(encodedCode);
+      const input = document.getElementById("codeInput").value;
+      const decoded = atob(encodedCode);
 
-      if (input === decodedCode) {
+      if (input === decoded) {
         window.location.href = "confirmed.html";
       } else {
         document.getElementById("errorMsg").style.display = "block";
       }
     }
   </script>
-
 </body>
 </html>
