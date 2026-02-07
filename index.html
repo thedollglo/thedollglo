@@ -1,134 +1,126 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>THE DOLL + GLO — Private Access</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>THE DOLL + GLO</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: "Times New Roman", serif;
-      background: #ffffff;
-      color: #000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      text-align: center;
-    }
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: "Times New Roman", serif;
+}
 
-    .container {
-      width: 90%;
-      max-width: 420px;
-    }
+/* ---------- STATES ---------- */
+.screen {
+  display: none;
+  height: 100vh;
+  width: 100vw;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
 
-    h1 {
-      font-size: 42px;
-      letter-spacing: 1px;
-      margin-bottom: 12px;
-    }
+.screen.active {
+  display: flex;
+}
 
-    p {
-      font-size: 16px;
-      margin-bottom: 32px;
-    }
+/* ---------- GATE ---------- */
+#gate {
+  background: #ffffff;
+}
 
-    input {
-      width: 100%;
-      padding: 14px;
-      font-size: 16px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      margin-bottom: 20px;
-    }
+h1 {
+  font-size: 42px;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
 
-    button {
-      background: #000;
-      color: #fff;
-      border: none;
-      padding: 14px 28px;
-      font-size: 16px;
-      border-radius: 30px;
-      cursor: pointer;
-    }
+.subtitle {
+  font-size: 16px;
+  margin-bottom: 32px;
+}
 
-    button:hover {
-      opacity: 0.9;
-    }
+input {
+  padding: 14px;
+  font-size: 16px;
+  width: 260px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
 
-    .hidden {
-      display: none;
-    }
+button {
+  margin-top: 16px;
+  padding: 12px 36px;
+  border-radius: 999px;
+  border: none;
+  background: #000;
+  color: #fff;
+  font-size: 16px;
+}
 
-    .received {
-      background: #000;
-      color: #fff;
-      width: 100%;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-    }
+/* ---------- RECEIVED ---------- */
+#received {
+  background: #000;
+  color: #fff;
+}
 
-    .received h2 {
-      font-size: 18px;
-      letter-spacing: 1px;
-    }
+#received h2 {
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
 
-    .received span {
-      font-size: 12px;
-      opacity: 0.8;
-    }
-  </style>
+#received p {
+  font-size: 14px;
+  opacity: 0.8;
+}
+</style>
 </head>
 
 <body>
 
-  <!-- ACCESS GATE -->
-  <div class="container" id="gate">
-    <h1>THE DOLL + GLO</h1>
-    <p>Studio access required.</p>
+<!-- GATE SCREEN -->
+<div id="gate" class="screen active">
+  <h1>THE DOLL + GLO</h1>
+  <div class="subtitle">Studio access required.</div>
 
-    <input
-      type="password"
-      id="codeInput"
-      placeholder="Enter Studio Code"
-    />
+  <input id="codeInput" placeholder="Enter Studio Code" />
+  <button onclick="checkCode()">Enter</button>
+</div>
 
-    <button onclick="checkCode()">Enter</button>
-  </div>
+<!-- RECEIVED SCREEN -->
+<div id="received" class="screen">
+  <h2>RECEIVED</h2>
+  <p>Your signal has been acknowledged.</p>
+</div>
 
-  <!-- RECEIVED SCREEN -->
-  <div class="received hidden" id="received">
-    <h2>RECEIVED</h2>
-    <span>Your signal has been acknowledged.</span>
-  </div>
+<!-- TALLY (HIDDEN SIGNAL) -->
+<iframe
+  id="tallyFrame"
+  src="https://tally.so/r/jaQe84"
+  style="display:none;">
+</iframe>
 
-  <!-- HIDDEN TALLY EMBED (ALERT ONLY) -->
-  <iframe
-    src="https://tally.so/r/jaQe84?transparentBackground=1"
-    width="0"
-    height="0"
-    frameborder="0"
-    style="display:none;"
-  ></iframe>
+<script>
+function checkCode() {
+  const code = document.getElementById("codeInput").value.trim();
 
-  <script>
-    function checkCode() {
-      const input = document.getElementById("codeInput").value;
-      const gate = document.getElementById("gate");
-      const received = document.getElementById("received");
+  if (code === "STUDIO.001") {
+    // fire tally
+    document.getElementById("tallyFrame").src += "";
 
-      if (input === "STUDIO.001") {
-        gate.classList.add("hidden");
-        received.classList.remove("hidden");
-      } else {
-        alert("Invalid studio code.");
-      }
-    }
-  </script>
+    // swap screens
+    document.getElementById("gate").classList.remove("active");
+    document.getElementById("received").classList.add("active");
+  } else {
+    alert("Access denied.");
+  }
+}
+</script>
 
 </body>
 </html>
