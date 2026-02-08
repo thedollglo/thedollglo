@@ -2,122 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Private Access — THE DOLL + GLO</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-      font-family: "Helvetica Neue", Arial, sans-serif;
-      letter-spacing: 0.15em;
-    }
-
-    body {
-      margin: 0;
-      height: 100vh;
-      background: #000;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .container {
-      width: 100%;
-      max-width: 420px;
-      text-align: center;
-      padding: 40px 20px;
-    }
-
-    .logo {
-      width: 64px;
-      height: 64px;
-      border: 2px solid #fff;
-      border-radius: 16px;
-      margin: 0 auto 32px;
-    }
-
-    h1 {
-      font-size: 18px;
-      font-weight: 300;
-      margin-bottom: 8px;
-    }
-
-    h2 {
-      font-size: 11px;
-      font-weight: 300;
-      opacity: 0.6;
-      margin-bottom: 32px;
-    }
-
-    input {
-      width: 100%;
-      padding: 18px;
-      background: transparent;
-      border: 1px solid rgba(255,255,255,0.3);
-      color: #fff;
-      font-size: 14px;
-      text-align: center;
-      margin-bottom: 20px;
-      outline: none;
-    }
-
-    button {
-      width: 100%;
-      padding: 18px;
-      background: #fff;
-      color: #000;
-      border: none;
-      font-size: 12px;
-      cursor: pointer;
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    .spinner {
-      margin-top: 30px;
-      font-size: 12px;
-      opacity: 0.6;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+  <div class="container">
+    <div class="icon"></div>
 
-  <div class="container" id="gate">
-    <div class="logo"></div>
+    <h1>Private Access —<br>THE DOLL + GLO</h1>
+    <p class="sub">ACCESS SOURCE</p>
 
-    <h1>Private Access —<br/>THE DOLL + GLO</h1>
-    <h2>ACCESS SOURCE</h2>
+    <input
+      type="password"
+      id="accessCode"
+      placeholder="Enter access code"
+    />
 
-    <input id="code" type="password" placeholder="Enter access code" />
-    <button id="continueBtn">CONTINUE</button>
+    <button onclick="grantAccess()">CONTINUE</button>
 
-    <div class="spinner hidden" id="loading">RECEIVED</div>
+    <p id="error"></p>
   </div>
 
-  <script>
-    const button = document.getElementById("continueBtn");
-    const input = document.getElementById("code");
-    const loading = document.getElementById("loading");
-
-    button.addEventListener("click", function () {
-      const value = input.value.trim();
-
-      if (value === "STUDIO.001") {
-        loading.classList.remove("hidden");
-
-        setTimeout(() => {
-          window.location.href = https://www.canva.com/design/DAHAklIMxck/6ypTz3IR0h_EtIWDtGGY-w/view
-        }, 15000);
-
-      } else {
-        alert("Access denied.");
-      }
-    });
-  </script>
-
+  <script src="access.js"></script>
 </body>
 </html>
