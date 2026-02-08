@@ -3,22 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Doll Glo</title>
+  <title>Acknowledged</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body class="locked">
 
-  <div class="center">
-    <h1>ACKNOWLEDGED</h1>
-    <p>Your signal has been received.<br>Please remain on this page.</p>
-    <div class="line"></div>
+<body class="black-bg center-screen">
+  <div class="ack-wrapper fade-in">
+    <h1 class="ack-title">ACKNOWLEDGED</h1>
+    <p class="ack-sub">
+      Your signal has been received.<br />
+      Please remain on this page.
+    </p>
+    <div class="divider"></div>
   </div>
 
   <script>
+    // intentional pause before transition
     setTimeout(() => {
       window.location.href = "reveal.html";
-    }, 2200);
+    }, 4200); // slowed for ritual feel
   </script>
-
 </body>
 </html>
