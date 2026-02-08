@@ -1,6 +1,6 @@
 const VALID_CODE = "DOLL15";
 const WAIT_TIME = 15 * 60 * 1000; // 15 minutes
-const CANVA_URL = "https://your-published-canva-link";
+const CANVA_URL = https://thedollglo.com/home
 const TALLY_WEBHOOK = "https://tally.so/r/jaQe84";
 
 function submitCode() {
