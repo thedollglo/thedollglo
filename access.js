@@ -25,5 +25,5 @@ function grantAccess() {
   });
 
   // Redirect to Canva site
-  window.location.href = "https://YOUR-CANVA-LINK";
+  window.location.href = https://www.canva.com/design/DAHAklIMxck/6ypTz3IR0h_EtIWDtGGY-w/view
 }
