@@ -2,98 +2,40 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>THE DOLL + GLO</title>
+  <title>THE DOLL + GLO — Private Access</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@700&family=Montserrat:wght@400&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 
   <style>
-    body {
+    html, body {
       margin: 0;
-      font-family: 'Montserrat', sans-serif;
-      background: #ffffff;
-      color: #000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      text-align: center;
-    }
-
-    h1 {
-      font-family: 'Libre Franklin', sans-serif;
-      font-size: 36px;
-      letter-spacing: 2px;
-      margin-bottom: 10px;
-    }
-
-    p {
-      font-size: 16px;
-      margin-bottom: 30px;
-    }
-
-    input {
-      width: 260px;
-      padding: 14px;
-      font-size: 16px;
-      border: 2px solid #ccc;
-      border-radius: 10px;
-      text-align: center;
-      outline: none;
-    }
-
-    button {
-      margin-top: 20px;
-      padding: 14px 40px;
-      font-size: 16px;
-      border: none;
-      border-radius: 30px;
+      padding: 0;
+      height: 100%;
       background: #000;
-      color: #fff;
-      cursor: pointer;
+      font-family: 'Libre Franklin', sans-serif;
     }
 
-    .error {
-      margin-top: 20px;
-      color: #777;
-      font-size: 14px;
-      display: none;
+    iframe {
+      border: none;
+      width: 100%;
+      height: 100vh;
+      display: block;
     }
   </style>
 </head>
 <body>
 
-  <div>
-    <h1>THE DOLL + GLO</h1>
-    <p>Studio access required.</p>
-
-    <input
-      type="password"
-      id="code"
-      placeholder="Enter Studio Code"
-      autocomplete="off"
-    />
-
-    <br />
-
-    <button onclick="checkCode()">Enter</button>
-
-    <div class="error" id="error">Access not granted.</div>
-  </div>
-
-  <script>
-    function checkCode() {
-      const input = document.getElementById("code").value;
-      const error = document.getElementById("error");
-
-      if (input === "STUDIO.001") {
-        window.location.href = "received.html";
-      } else {
-        error.style.display = "block";
-      }
-    }
-  </script>
+  <!-- TALLY EMBED -->
+  <iframe
+    src="https://tally.so/r/jaQe84?transparentBackground=1"
+    title="Private Access — THE DOLL + GLO"
+    allow="clipboard-write; fullscreen"
+    loading="eager">
+  </iframe>
 
 </body>
 </html>
