@@ -2,28 +2,34 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>THE DOLL + GLO</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+  <title>THE DOLL + GLO — REVEAL</title>
   <style>
     html, body {
       margin: 0;
       padding: 0;
       height: 100%;
       background: #000;
+      overflow-x: hidden; /* KILLS horizontal */
     }
     iframe {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
       border: none;
-      width: 100%;
-      height: 100%;
+      background: #000;
     }
   </style>
 </head>
-
 <body>
+
+  <!-- Cinematic, chrome-free -->
   <iframe
-    src="THE%20DOLL%20+%20GLO_WEB.pdf"
-    loading="lazy"
+    src="the-doll-glo.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH"
+    loading="eager"
+    allowfullscreen
   ></iframe>
+
 </body>
 </html>
