@@ -4,26 +4,26 @@
   <meta charset="UTF-8" />
   <title>Private Access — THE DOLL + GLO</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
 </head>
+<body style="background:black;color:white;font-family:serif;text-align:center;padding-top:20vh;">
 
-<body>
-  <div class="container">
-    <div class="icon"></div>
+  <h1>Private Access — THE DOLL + GLO</h1>
+  <p>ACCESS SOURCE</p>
 
-    <h1>Private Access —<br>THE DOLL + GLO</h1>
-    <p class="sub">ACCESS SOURCE</p>
+  <input
+    type="password"
+    id="codeInput"
+    placeholder="Enter Studio Code"
+    style="padding:12px;width:220px;text-align:center;"
+  />
 
-    <input
-      type="password"
-      id="accessCode"
-      placeholder="Enter access code"
-    />
+  <br><br>
 
-    <button onclick="grantAccess()">CONTINUE</button>
+  <button onclick="submitCode()" style="padding:12px 40px;">
+    CONTINUE
+  </button>
 
-    <p id="error"></p>
-  </div>
+  <p id="error" style="color:#aaa;margin-top:20px;"></p>
 
   <script src="access.js"></script>
 </body>
