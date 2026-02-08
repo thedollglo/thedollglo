@@ -1,45 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Access</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      background: #000;
-      color: #aaa;
-      font-family: "Helvetica Neue", Arial, sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
+body {
+  background: black;
+  color: white;
+  font-family: "Didot", "Bodoni MT", serif;
+  overflow-x: hidden;
+}
 
-    .copy {
-      max-width: 420px;
-      line-height: 1.6;
-      font-size: 14px;
-    }
+.panel {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
 
-    a {
-      color: #888;
-      text-decoration: none;
-    }
-  </style>
-</head>
+.small {
+  font-size: 14px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
 
-<body>
-  <div class="copy">
-    <strong>ACCESS IS NOT REQUESTED</strong><br /><br />
-    Entry is extended selectively.<br />
-    If you are aligned, initiate.<br /><br />
-    <a href="mailto:access@thedollglo.com">access@thedollglo.com</a><br /><br />
-    All inquiries are reviewed.<br />
-    Not all are answered.
-  </div>
-</body>
-</html>
+h1 {
+  font-size: clamp(48px, 12vw, 140px);
+  letter-spacing: 0.08em;
+}
