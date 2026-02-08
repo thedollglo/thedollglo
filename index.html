@@ -3,166 +3,121 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>THE DOLL + GLO — Private Access</title>
-
-  <!-- FONT LOCK -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <title>Private Access — THE DOLL + GLO</title>
 
   <style>
     * {
-      margin: 0;
-      padding: 0;
       box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      letter-spacing: 0.15em;
     }
 
     body {
+      margin: 0;
+      height: 100vh;
       background: #000;
       color: #fff;
-      height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      overflow: hidden;
     }
 
     .container {
-      text-align: center;
       width: 100%;
       max-width: 420px;
-      padding: 24px;
+      text-align: center;
+      padding: 40px 20px;
     }
 
     .logo {
-      width: 52px;
-      height: 52px;
+      width: 64px;
+      height: 64px;
       border: 2px solid #fff;
-      border-radius: 12px;
-      margin: 0 auto 28px;
-      opacity: 0.85;
+      border-radius: 16px;
+      margin: 0 auto 32px;
     }
 
     h1 {
+      font-size: 18px;
       font-weight: 300;
-      font-size: 26px;
-      letter-spacing: 0.06em;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
-    .sub {
-      font-size: 12px;
-      letter-spacing: 0.12em;
-      opacity: 0.55;
-      margin-bottom: 30px;
+    h2 {
+      font-size: 11px;
+      font-weight: 300;
+      opacity: 0.6;
+      margin-bottom: 32px;
     }
 
     input {
       width: 100%;
-      padding: 14px;
+      padding: 18px;
       background: transparent;
-      border: 1px solid rgba(255,255,255,0.35);
+      border: 1px solid rgba(255,255,255,0.3);
       color: #fff;
       font-size: 14px;
       text-align: center;
-      letter-spacing: 0.2em;
+      margin-bottom: 20px;
       outline: none;
-      margin-bottom: 16px;
     }
 
     button {
       width: 100%;
-      padding: 14px;
+      padding: 18px;
       background: #fff;
       color: #000;
       border: none;
-      font-size: 13px;
-      letter-spacing: 0.18em;
+      font-size: 12px;
       cursor: pointer;
     }
 
-    .error {
-      font-size: 11px;
-      color: #ff4d4d;
-      margin-top: 10px;
+    .hidden {
       display: none;
-    }
-
-    .received {
-      display: none;
-    }
-
-    .received h1 {
-      margin-top: 40px;
-      font-size: 28px;
-      letter-spacing: 0.2em;
-    }
-
-    .received p {
-      margin-top: 12px;
-      font-size: 12px;
-      opacity: 0.6;
     }
 
     .spinner {
-      margin: 36px auto 0;
-      width: 22px;
-      height: 22px;
-      border: 2px solid rgba(255,255,255,0.25);
-      border-top: 2px solid #fff;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
+      margin-top: 30px;
+      font-size: 12px;
+      opacity: 0.6;
     }
   </style>
 </head>
 
 <body>
+
   <div class="container" id="gate">
     <div class="logo"></div>
 
-    <h1>Private Access —<br>THE DOLL + GLO</h1>
-    <div class="sub">ACCESS SOURCE</div>
+    <h1>Private Access —<br/>THE DOLL + GLO</h1>
+    <h2>ACCESS SOURCE</h2>
 
-    <input
-      type="password"
-      id="code"
-      placeholder="ENTER ACCESS CODE"
-      autocomplete="off"
-    />
+    <input id="code" type="password" placeholder="Enter access code" />
+    <button id="continueBtn">CONTINUE</button>
 
-    <button onclick="unlock()">CONTINUE</button>
-    <div class="error" id="error">Invalid access code</div>
-  </div>
-
-  <div class="container received" id="received">
-    <h1>RECEIVED</h1>
-    <p>Your signal has been acknowledged.</p>
-    <div class="spinner"></div>
+    <div class="spinner hidden" id="loading">RECEIVED</div>
   </div>
 
   <script>
-    const ACCESS_CODE = "STUDIO.001";
-    const REDIRECT_URL = https://www.canva.com/design/DAHAklIMxck/6ypTz3IR0h_EtIWDtGGY-w/view
-    const DELAY = 15 * 60 * 1000; // 15 minutes
+    const button = document.getElementById("continueBtn");
+    const input = document.getElementById("code");
+    const loading = document.getElementById("loading");
 
-    function unlock() {
-      const input = document.getElementById("code").value.trim();
-      const error = document.getElementById("error");
+    button.addEventListener("click", function () {
+      const value = input.value.trim();
 
-      if (input === ACCESS_CODE) {
-        document.getElementById("gate").style.display = "none";
-        document.getElementById("received").style.display = "block";
+      if (value === "STUDIO.001") {
+        loading.classList.remove("hidden");
 
         setTimeout(() => {
-          window.location.href = REDIRECT_URL;
-        }, DELAY);
+          window.location.href = https://www.canva.com/design/DAHAklIMxck/6ypTz3IR0h_EtIWDtGGY-w/view
+        }, 15000);
+
       } else {
-        error.style.display = "block";
+        alert("Access denied.");
       }
-    }
+    });
   </script>
+
 </body>
 </html>
