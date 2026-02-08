@@ -7,22 +7,19 @@
   <title>THE DOLL + GLO</title>
 
   <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@700;800&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
 
   <style>
     * {
       box-sizing: border-box;
-      -webkit-tap-highlight-color: transparent;
     }
 
     body {
       margin: 0;
       padding: 0;
-      background: #ffffff;
-      color: #000000;
       font-family: 'Montserrat', sans-serif;
+      background: #ffffff;
+      color: #000;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -32,21 +29,22 @@
     .container {
       width: 100%;
       max-width: 420px;
-      padding: 48px 24px;
+      padding: 0 24px;
       text-align: center;
     }
 
     h1 {
       font-family: 'Libre Franklin', sans-serif;
-      font-size: 44px;
-      letter-spacing: 0.08em;
-      margin: 0 0 12px;
+      font-weight: 800;
+      font-size: 42px;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
     }
 
-    .sub {
+    p {
       font-size: 16px;
-      opacity: 0.75;
-      margin-bottom: 40px;
+      margin-bottom: 32px;
+      color: #333;
     }
 
     input {
@@ -54,9 +52,8 @@
       padding: 16px;
       font-size: 16px;
       border-radius: 10px;
-      border: 1px solid #dcdcdc;
+      border: 1px solid #ddd;
       outline: none;
-      font-family: 'Montserrat', sans-serif;
       margin-bottom: 20px;
     }
 
@@ -65,67 +62,74 @@
     }
 
     button {
-      width: 160px;
-      padding: 14px;
+      width: 140px;
+      padding: 14px 0;
+      font-size: 16px;
       border-radius: 999px;
       border: none;
       background: #000;
       color: #fff;
-      font-size: 15px;
       cursor: pointer;
     }
 
-    #error {
-      margin-top: 18px;
+    .error {
+      margin-top: 16px;
       font-size: 14px;
-      opacity: 0.6;
+      color: #999;
+      min-height: 18px;
+    }
+
+    /* Hidden Tally iframe */
+    iframe {
+      display: none;
     }
   </style>
 </head>
-
 <body>
+
   <div class="container">
-    <h1>THE DOLL +<br>GLO</h1>
-    <div class="sub">Studio access required.</div>
+    <h1>THE DOLL + GLO</h1>
+    <p>Studio access required.</p>
 
     <input
-      id="code"
       type="password"
+      id="codeInput"
       placeholder="Enter Studio Code"
       autocomplete="off"
       inputmode="text"
     />
 
-    <button onclick="checkAccess()">Enter</button>
+    <button onclick="checkCode()">Enter</button>
 
-    <div id="error"></div>
+    <div class="error" id="errorMsg"></div>
   </div>
 
-  <script>
-    const CORRECT_CODE = "YOURCODEHERE"; // ← change this
-    const TALLY_URL = "https://tally.so/r/YOUR_TALLY_ID"; // ← change this
+  <!-- Hidden Tally Trigger -->
+  <iframe
+    id="tallyFrame"
+    src="https://tally.so/r/jaQe84"
+    aria-hidden="true">
+  </iframe>
 
-    function checkAccess() {
-      const input = document.getElementById("code").value.trim();
-      const error = document.getElementById("error");
+  <script>
+    const CORRECT_CODE = "STUDIO.001";
+
+    function checkCode() {
+      const input = document.getElementById("codeInput").value.trim();
+      const error = document.getElementById("errorMsg");
 
       if (input === CORRECT_CODE) {
+        document.getElementById("tallyFrame").src =
+          "https://tally.so/r/jaQe84?code=" + encodeURIComponent(input);
 
-        // Inject Tally ONLY after success (Safari-safe)
-        const iframe = document.createElement("iframe");
-        iframe.src = TALLY_URL + "?submitted=true";
-        iframe.style.display = "none";
-        document.body.appendChild(iframe);
-
-        // Redirect to RECEIVED screen
         setTimeout(() => {
-          window.location.href = "received.html";
-        }, 300);
-
+          window.location.href = "/received.html";
+        }, 500);
       } else {
         error.textContent = "Access not granted.";
       }
     }
   </script>
+
 </body>
 </html>
