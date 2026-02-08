@@ -2,28 +2,79 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Private Access — THE DOLL + GLO</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOLL + GLO — Private Access</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      color: #fff;
+      font-family: "Times New Roman", serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    h1 {
+      letter-spacing: 0.15em;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 14px;
+      letter-spacing: 0.25em;
+      margin-bottom: 30px;
+      opacity: 0.8;
+    }
+
+    input {
+      width: 260px;
+      padding: 14px;
+      font-size: 16px;
+      border-radius: 12px;
+      border: none;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 14px 40px;
+      border-radius: 30px;
+      border: none;
+      font-size: 14px;
+      cursor: pointer;
+      letter-spacing: 0.15em;
+    }
+
+    .error {
+      margin-top: 20px;
+      color: #888;
+      font-size: 13px;
+    }
+  </style>
 </head>
-<body style="background:black;color:white;font-family:serif;text-align:center;padding-top:20vh;">
 
-  <h1>Private Access — THE DOLL + GLO</h1>
-  <p>ACCESS SOURCE</p>
+<body>
+  <div>
+    <h1>DOLL + GLO</h1>
+    <h2>ACCESS SOURCE</h2>
 
-  <input
-    type="password"
-    id="codeInput"
-    placeholder="Enter Studio Code"
-    style="padding:12px;width:220px;text-align:center;"
-  />
+    <input
+      type="password"
+      id="accessInput"
+      placeholder="Enter access code"
+    />
 
-  <br><br>
+    <br />
 
-  <button onclick="submitCode()" style="padding:12px 40px;">
-    CONTINUE
-  </button>
+    <button onclick="checkAccess()">CONTINUE</button>
 
-  <p id="error" style="color:#aaa;margin-top:20px;"></p>
+    <div class="error" id="errorMsg"></div>
+  </div>
 
   <script src="access.js"></script>
 </body>
