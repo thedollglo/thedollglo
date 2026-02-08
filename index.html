@@ -2,143 +2,98 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <title>THE DOLL + GLO</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>THE DOLL + GLO</title>
-
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@700;800&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@700&family=Montserrat:wght@400&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
     body {
       margin: 0;
-      padding: 0;
       font-family: 'Montserrat', sans-serif;
       background: #ffffff;
       color: #000;
       display: flex;
-      align-items: center;
       justify-content: center;
-      min-height: 100vh;
-    }
-
-    .container {
-      width: 100%;
-      max-width: 420px;
-      padding: 0 24px;
+      align-items: center;
+      height: 100vh;
       text-align: center;
     }
 
     h1 {
       font-family: 'Libre Franklin', sans-serif;
-      font-weight: 800;
-      font-size: 42px;
-      letter-spacing: 1px;
-      margin-bottom: 8px;
+      font-size: 36px;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
     }
 
     p {
       font-size: 16px;
-      margin-bottom: 32px;
-      color: #333;
+      margin-bottom: 30px;
     }
 
     input {
-      width: 100%;
-      padding: 16px;
+      width: 260px;
+      padding: 14px;
       font-size: 16px;
+      border: 2px solid #ccc;
       border-radius: 10px;
-      border: 1px solid #ddd;
+      text-align: center;
       outline: none;
-      margin-bottom: 20px;
-    }
-
-    input:focus {
-      border-color: #000;
     }
 
     button {
-      width: 140px;
-      padding: 14px 0;
+      margin-top: 20px;
+      padding: 14px 40px;
       font-size: 16px;
-      border-radius: 999px;
       border: none;
+      border-radius: 30px;
       background: #000;
       color: #fff;
       cursor: pointer;
     }
 
     .error {
-      margin-top: 16px;
+      margin-top: 20px;
+      color: #777;
       font-size: 14px;
-      color: #999;
-      min-height: 18px;
-    }
-
-    /* Hidden Tally iframe */
-    iframe {
       display: none;
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
+  <div>
     <h1>THE DOLL + GLO</h1>
     <p>Studio access required.</p>
 
     <input
       type="password"
-      id="codeInput"
+      id="code"
       placeholder="Enter Studio Code"
       autocomplete="off"
-      inputmode="text"
     />
+
+    <br />
 
     <button onclick="checkCode()">Enter</button>
 
-    <div class="error" id="errorMsg"></div>
+    <div class="error" id="error">Access not granted.</div>
   </div>
 
-  <!-- Hidden Tally Trigger -->
-  <iframe
-    id="tallyFrame"
-    src="https://tally.so/r/jaQe84"
-    aria-hidden="true">
-  </iframe>
+  <script>
+    function checkCode() {
+      const input = document.getElementById("code").value;
+      const error = document.getElementById("error");
 
- <script>
-  const CORRECT_CODE = "STUDIO.001";
-
-  function normalize(input) {
-    return input
-      .toUpperCase()
-      .replace(/\s+/g, "")   // remove spaces
-      .replace(/[•·]/g, ".") // normalize dots
-      .trim();
-  }
-
-  function checkCode() {
-    const rawInput = document.getElementById("codeInput").value;
-    const input = normalize(rawInput);
-    const error = document.getElementById("errorMsg");
-
-    if (input === CORRECT_CODE) {
-      document.getElementById("tallyFrame").src =
-        "https://tally.so/r/jaQe84?code=" + encodeURIComponent(input);
-
-      setTimeout(() => {
-        window.location.href = "/received.html";
-      }, 500);
-    } else {
-      error.textContent = "Access not granted.";
+      if (input === "STUDIO.001") {
+        window.location.href = "received.html";
+      } else {
+        error.style.display = "block";
+      }
     }
-  }
-</script>
+  </script>
 
 </body>
 </html>
