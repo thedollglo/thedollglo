@@ -1,91 +1,116 @@
-/* RESET */
-* {
+/* =========================
+   GLOBAL RESET + SAFETY
+   ========================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
-/* GLOBAL */
-html, body {
+html,
+body {
   width: 100%;
   height: 100%;
-  overflow-x: hidden;
-  background: #000;
+  overflow-x: hidden; /* KILLS right scroll */
+  background-color: #000;
   color: #fff;
-  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
 }
 
-/* BACKGROUND */
-.black-bg {
-  background: #000;
-}
+/* =========================
+   MAIN WRAPPER / CENTERING
+   ========================= */
 
-/* CENTERING */
-.center-screen {
+body {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+}
+
+/* If index uses a wrapper div */
+.wrapper,
+.container,
+.main,
+.center {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
+  padding: 0 1.25rem;
 }
 
-/* ACK PAGE */
-.ack-wrapper {
-  max-width: 90%;
+/* =========================
+   HEADLINE (ACKNOWLEDGED)
+   ========================= */
+
+h1 {
+  font-size: clamp(2.5rem, 10vw, 6rem);
+  letter-spacing: 0.15em;
+  white-space: nowrap;
+  margin-bottom: 1.25rem;
 }
 
-.ack-title {
-  font-size: 3rem;
-  letter-spacing: 0.25em;
-  margin-bottom: 1rem;
-}
+/* =========================
+   BODY COPY
+   ========================= */
 
-.ack-sub {
-  font-size: 1rem;
-  opacity: 0.7;
+p {
+  font-size: clamp(1rem, 4vw, 1.25rem);
   line-height: 1.6;
+  color: #bfbfbf;
+  max-width: 32rem;
 }
 
-.divider {
+/* =========================
+   DIVIDER LINE
+   ========================= */
+
+.divider,
+hr {
   width: 60px;
   height: 1px;
-  background: #777;
-  margin: 2rem auto 0;
+  background-color: #777;
+  border: none;
+  margin-top: 2rem;
 }
 
-/* FADE */
+/* =========================
+   MOTION CONTROL
+   ========================= */
+
+@keyframes fadeInSlow {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Apply only if index calls animation */
 .fade-in {
-  animation: fade 1.8s ease-out forwards;
+  animation: fadeInSlow 2.5s ease forwards;
 }
 
-@keyframes fade {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
+/* =========================
+   MOBILE HARD FIXES
+   ========================= */
 
-/* REVEAL SECTIONS */
-.scroll-lock {
-  scroll-snap-type: y mandatory;
-}
+@media (max-width: 480px) {
+  h1 {
+    letter-spacing: 0.12em;
+  }
 
-.panel {
-  height: 100vh;
-  scroll-snap-align: start;
-  padding: 0 5vw;
-}
-
-/* TEXT STYLES */
-.whisper {
-  font-size: 1rem;
-  letter-spacing: 0.3em;
-  opacity: 0.8;
-}
-
-.impact {
-  font-size: clamp(2.5rem, 8vw, 5rem);
-  font-weight: 300;
-  letter-spacing: 0.08em;
-}
-html, body {
-  width: 100%;
-  overflow-x: hidden;
+  p {
+    font-size: 1rem;
+  }
 }
