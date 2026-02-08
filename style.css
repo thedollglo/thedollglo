@@ -85,3 +85,7 @@ html, body {
   font-weight: 300;
   letter-spacing: 0.08em;
 }
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
