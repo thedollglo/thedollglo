@@ -2,87 +2,100 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>DOLL + GLO — Private Access</title>
+  <title>ACKNOWLEDGED — THE DOLL + GLO</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <style>
-    body {
+    * {
       margin: 0;
-      background: #000;
-      color: #fff;
-      font-family: "Times New Roman", serif;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
       height: 100vh;
+      background: #0b0b0b;
+      color: #f4f4f4;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
+      letter-spacing: 0.14em;
     }
 
     .container {
-      width: 90%;
-      max-width: 360px;
+      max-width: 520px;
+      padding: 40px 20px;
     }
 
     h1 {
-      font-size: 28px;
-      letter-spacing: 2px;
-      margin-bottom: 6px;
+      font-size: 1.75rem;
+      font-weight: 300;
+      margin-bottom: 26px;
     }
 
     p {
-      font-size: 12px;
-      letter-spacing: 2px;
-      opacity: 0.7;
-      margin-bottom: 28px;
+      font-size: 0.72rem;
+      font-weight: 300;
+      line-height: 1.9;
+      opacity: 0.8;
     }
 
-    input {
-      width: 100%;
-      padding: 14px;
-      border-radius: 30px;
-      border: none;
-      text-align: center;
-      font-size: 14px;
-      margin-bottom: 16px;
+    /* Hairline signal */
+    .hairline {
+      width: 48px;
+      height: 1px;
+      background: #f4f4f4;
+      margin: 42px auto 0;
+      opacity: 0.25;
+      animation: breathe 5s ease-in-out infinite;
     }
 
-    button {
-      width: 100%;
-      padding: 14px;
-      border-radius: 30px;
-      border: none;
-      background: #eaeaea;
-      color: #000;
-      font-size: 14px;
-      letter-spacing: 2px;
-      cursor: pointer;
+    @keyframes breathe {
+      0%   { opacity: 0.15; }
+      50%  { opacity: 0.45; }
+      100% { opacity: 0.15; }
     }
 
-    .error {
-      margin-top: 16px;
-      font-size: 12px;
-      color: #aaa;
-      display: none;
+    /* Hide Tally completely */
+    iframe {
+      display: none !important;
+      visibility: hidden;
+      height: 0;
+      width: 0;
+      border: 0;
     }
   </style>
 </head>
 
 <body>
+
   <div class="container">
-    <h1>DOLL + GLO</h1>
-    <p>ACCESS SOURCE</p>
+    <h1>ACKNOWLEDGED</h1>
+    <p>
+      Your signal has been received.<br />
+      Please remain on this page.
+    </p>
 
-    <input
-      type="password"
-      id="accessCode"
-      placeholder="Enter access code"
-    />
-
-    <button onclick="submitCode()">CONTINUE</button>
-
-    <div id="error" class="error">Invalid access code</div>
+    <div class="hairline"></div>
   </div>
 
-  <script src="access.js"></script>
+  <!-- Hidden Tally Notification Trigger -->
+  <iframe
+    src="https://tally.so/r/jaQe84"
+    title="Hidden Signal"
+    aria-hidden="true">
+  </iframe>
+
+  <script>
+    // 6 minutes 30 seconds
+    const WAIT_TIME = 390000;
+
+    setTimeout(() => {
+      window.location.href = "/home";
+    }, WAIT_TIME);
+  </script>
+
 </body>
 </html>
