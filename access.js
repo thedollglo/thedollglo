@@ -1,31 +1,16 @@
-const VALID_CODE = "DOLL15";
-const WAIT_TIME = 15 * 60 * 1000; // 15 minutes
-const CANVA_URL = https://thedollglo.com/home
-const TALLY_WEBHOOK = "https://tally.so/r/jaQe84";
+const ACCESS_CODE = "DOLL15";
 
-function submitCode() {
-  const input = document.getElementById("codeInput").value.trim();
-  const error = document.getElementById("error");
+function checkAccess() {
+  const input = document.getElementById("accessInput").value.trim();
+  const error = document.getElementById("errorMsg");
 
-  if (input !== VALID_CODE) {
-    error.textContent = "Invalid access code";
-    return;
+  if (input === ACCESS_CODE) {
+    // mark access granted
+    sessionStorage.setItem("dollglo_access", "granted");
+
+    // redirect to home
+    window.location.href = "/home";
+  } else {
+    error.textContent = "Invalid access source.";
   }
-
-  const timestamp = Date.now();
-  localStorage.setItem("accessGrantedAt", timestamp);
-
-  // Fire Tally silently
-  fetch(TALLY_WEBHOOK, { method: "POST", mode: "no-cors" });
-
-  window.location.href = "received.html";
 }
-
-(function autoRedirectIfReady() {
-  const grantedAt = localStorage.getItem("accessGrantedAt");
-  if (!grantedAt) return;
-
-  if (Date.now() - grantedAt >= WAIT_TIME) {
-    window.location.href = CANVA_URL;
-  }
-})();
