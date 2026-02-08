@@ -111,25 +111,34 @@
     aria-hidden="true">
   </iframe>
 
-  <script>
-    const CORRECT_CODE = "STUDIO.001";
+ <script>
+  const CORRECT_CODE = "STUDIO.001";
 
-    function checkCode() {
-      const input = document.getElementById("codeInput").value.trim();
-      const error = document.getElementById("errorMsg");
+  function normalize(input) {
+    return input
+      .toUpperCase()
+      .replace(/\s+/g, "")   // remove spaces
+      .replace(/[•·]/g, ".") // normalize dots
+      .trim();
+  }
 
-      if (input === CORRECT_CODE) {
-        document.getElementById("tallyFrame").src =
-          "https://tally.so/r/jaQe84?code=" + encodeURIComponent(input);
+  function checkCode() {
+    const rawInput = document.getElementById("codeInput").value;
+    const input = normalize(rawInput);
+    const error = document.getElementById("errorMsg");
 
-        setTimeout(() => {
-          window.location.href = "/received.html";
-        }, 500);
-      } else {
-        error.textContent = "Access not granted.";
-      }
+    if (input === CORRECT_CODE) {
+      document.getElementById("tallyFrame").src =
+        "https://tally.so/r/jaQe84?code=" + encodeURIComponent(input);
+
+      setTimeout(() => {
+        window.location.href = "/received.html";
+      }, 500);
+    } else {
+      error.textContent = "Access not granted.";
     }
-  </script>
+  }
+</script>
 
 </body>
 </html>
