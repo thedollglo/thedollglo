@@ -2,40 +2,149 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>THE DOLL + GLO — Private Access</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 
   <style>
     html, body {
       margin: 0;
       padding: 0;
-      height: 100%;
       background: #000;
-      font-family: 'Libre Franklin', sans-serif;
+      color: #fff;
+      font-family: Arial, Helvetica, sans-serif;
+      height: 100%;
     }
 
-    iframe {
-      border: none;
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 420px;
+    }
+
+    .flower {
+      width: 70px;
+      margin: 0 auto 30px;
+      opacity: 0.85;
+    }
+
+    h1 {
+      font-size: 22px;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 14px;
+      opacity: 0.7;
+      margin-bottom: 30px;
+    }
+
+    input {
       width: 100%;
-      height: 100vh;
-      display: block;
+      padding: 14px;
+      background: #000;
+      border: 1px solid #444;
+      color: #fff;
+      font-size: 16px;
+      letter-spacing: 1px;
+      text-align: center;
+      outline: none;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 20px;
+      padding: 14px;
+      background: #fff;
+      color: #000;
+      border: none;
+      font-size: 14px;
+      letter-spacing: 2px;
+      cursor: pointer;
+    }
+
+    .error {
+      color: #ff4d4d;
+      margin-top: 15px;
+      display: none;
+      font-size: 13px;
+    }
+
+    .received {
+      display: none;
+      font-size: 14px;
+      letter-spacing: 2px;
+      opacity: 0.85;
     }
   </style>
 </head>
+
 <body>
 
-  <!-- TALLY EMBED -->
-  <iframe
-    src="https://tally.so/r/jaQe84?transparentBackground=1"
-    title="Private Access — THE DOLL + GLO"
-    allow="clipboard-write; fullscreen"
-    loading="eager">
-  </iframe>
+  <div class="container" id="accessScreen">
+    <!-- Broken flower icon (replace src if you want your own) -->
+    <img
+      class="flower"
+      src="https://upload.wikimedia.org/wikipedia/commons/8/84/Flower_icon_black.svg"
+      alt="Broken Flower"
+    />
+
+    <h1>THE DOLL + GLO</h1>
+    <p>PRIVATE ACCESS</p>
+
+    <input
+      type="password"
+      id="accessCode"
+      placeholder="ENTER ACCESS CODE"
+    />
+
+    <button onclick="checkCode()">CONTINUE</button>
+
+    <div class="error" id="errorMsg">
+      Invalid access code
+    </div>
+  </div>
+
+  <div class="container received" id="receivedScreen">
+    <p>RECEIVED</p>
+    <p style="opacity:0.5; margin-top:10px;">
+      Your signal has been acknowledged.
+    </p>
+  </div>
+
+  <script>
+    // 🔑 CHANGE THIS ACCESS CODE
+    const CORRECT_CODE = "STUDIO.001";
+
+    // ⏱️ DELAY BEFORE CANVA LOADS (milliseconds)
+    const REDIRECT_DELAY = 6000; // 6 seconds
+
+    // 🎨 CHANGE TO YOUR CANVA WEBSITE URL
+    const CANVA_URL = "https://YOUR-CANVA-SITE-URL-HERE";
+
+    function checkCode() {
+      const input = document.getElementById("accessCode").value;
+      const error = document.getElementById("errorMsg");
+
+      if (input === CORRECT_CODE) {
+        document.getElementById("accessScreen").style.display = "none";
+        document.getElementById("receivedScreen").style.display = "block";
+
+        setTimeout(() => {
+          window.location.href = CANVA_URL;
+        }, REDIRECT_DELAY);
+
+      } else {
+        error.style.display = "block";
+      }
+    }
+  </script>
 
 </body>
 </html>
