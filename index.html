@@ -5,146 +5,164 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>THE DOLL + GLO — Private Access</title>
 
+  <!-- FONT LOCK -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
   <style>
-    html, body {
+    * {
       margin: 0;
       padding: 0;
-      background: #000;
-      color: #fff;
-      font-family: Arial, Helvetica, sans-serif;
-      height: 100%;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
     }
 
     body {
+      background: #000;
+      color: #fff;
+      height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      text-align: center;
+      overflow: hidden;
     }
 
     .container {
-      width: 90%;
+      text-align: center;
+      width: 100%;
       max-width: 420px;
+      padding: 24px;
     }
 
-    .flower {
-      width: 70px;
-      margin: 0 auto 30px;
+    .logo {
+      width: 52px;
+      height: 52px;
+      border: 2px solid #fff;
+      border-radius: 12px;
+      margin: 0 auto 28px;
       opacity: 0.85;
     }
 
     h1 {
-      font-size: 22px;
-      letter-spacing: 2px;
+      font-weight: 300;
+      font-size: 26px;
+      letter-spacing: 0.06em;
       margin-bottom: 10px;
     }
 
-    p {
-      font-size: 14px;
-      opacity: 0.7;
+    .sub {
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      opacity: 0.55;
       margin-bottom: 30px;
     }
 
     input {
       width: 100%;
       padding: 14px;
-      background: #000;
-      border: 1px solid #444;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.35);
       color: #fff;
-      font-size: 16px;
-      letter-spacing: 1px;
+      font-size: 14px;
       text-align: center;
+      letter-spacing: 0.2em;
       outline: none;
+      margin-bottom: 16px;
     }
 
     button {
       width: 100%;
-      margin-top: 20px;
       padding: 14px;
       background: #fff;
       color: #000;
       border: none;
-      font-size: 14px;
-      letter-spacing: 2px;
+      font-size: 13px;
+      letter-spacing: 0.18em;
       cursor: pointer;
     }
 
     .error {
+      font-size: 11px;
       color: #ff4d4d;
-      margin-top: 15px;
+      margin-top: 10px;
       display: none;
-      font-size: 13px;
     }
 
     .received {
       display: none;
-      font-size: 14px;
-      letter-spacing: 2px;
-      opacity: 0.85;
+    }
+
+    .received h1 {
+      margin-top: 40px;
+      font-size: 28px;
+      letter-spacing: 0.2em;
+    }
+
+    .received p {
+      margin-top: 12px;
+      font-size: 12px;
+      opacity: 0.6;
+    }
+
+    .spinner {
+      margin: 36px auto 0;
+      width: 22px;
+      height: 22px;
+      border: 2px solid rgba(255,255,255,0.25);
+      border-top: 2px solid #fff;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
     }
   </style>
 </head>
 
 <body>
+  <div class="container" id="gate">
+    <div class="logo"></div>
 
-  <div class="container" id="accessScreen">
-    <!-- Broken flower icon (replace src if you want your own) -->
-    <img
-      class="flower"
-      src="https://upload.wikimedia.org/wikipedia/commons/8/84/Flower_icon_black.svg"
-      alt="Broken Flower"
-    />
-
-    <h1>THE DOLL + GLO</h1>
-    <p>PRIVATE ACCESS</p>
+    <h1>Private Access —<br>THE DOLL + GLO</h1>
+    <div class="sub">ACCESS SOURCE</div>
 
     <input
       type="password"
-      id="accessCode"
+      id="code"
       placeholder="ENTER ACCESS CODE"
+      autocomplete="off"
     />
 
-    <button onclick="checkCode()">CONTINUE</button>
-
-    <div class="error" id="errorMsg">
-      Invalid access code
-    </div>
+    <button onclick="unlock()">CONTINUE</button>
+    <div class="error" id="error">Invalid access code</div>
   </div>
 
-  <div class="container received" id="receivedScreen">
-    <p>RECEIVED</p>
-    <p style="opacity:0.5; margin-top:10px;">
-      Your signal has been acknowledged.
-    </p>
+  <div class="container received" id="received">
+    <h1>RECEIVED</h1>
+    <p>Your signal has been acknowledged.</p>
+    <div class="spinner"></div>
   </div>
 
   <script>
-    // 🔑 CHANGE THIS ACCESS CODE
-    const CORRECT_CODE = "STUDIO.001";
+    const ACCESS_CODE = "STUDIO.001";
+    const REDIRECT_URL = "https://YOUR-CANVA-LINK-HERE";
+    const DELAY = 15 * 60 * 1000; // 15 minutes
 
-    // ⏱️ DELAY BEFORE CANVA LOADS (milliseconds)
-    const REDIRECT_DELAY = 6000; // 6 seconds
+    function unlock() {
+      const input = document.getElementById("code").value.trim();
+      const error = document.getElementById("error");
 
-    // 🎨 CHANGE TO YOUR CANVA WEBSITE URL
-    const CANVA_URL = "https://YOUR-CANVA-SITE-URL-HERE";
-
-    function checkCode() {
-      const input = document.getElementById("accessCode").value;
-      const error = document.getElementById("errorMsg");
-
-      if (input === CORRECT_CODE) {
-        document.getElementById("accessScreen").style.display = "none";
-        document.getElementById("receivedScreen").style.display = "block";
+      if (input === ACCESS_CODE) {
+        document.getElementById("gate").style.display = "none";
+        document.getElementById("received").style.display = "block";
 
         setTimeout(() => {
-          window.location.href = CANVA_URL;
-        }, REDIRECT_DELAY);
-
+          window.location.href = REDIRECT_URL;
+        }, DELAY);
       } else {
         error.style.display = "block";
       }
     }
   </script>
-
 </body>
 </html>
