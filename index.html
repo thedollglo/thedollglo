@@ -10,12 +10,26 @@
 <body class="black-bg center-screen">
   <div class="ack-wrapper fade-in">
     <h1 class="ack-title">ACKNOWLEDGED</h1>
+
     <p class="ack-sub">
       Your signal has been received.<br />
       Please remain on this page.
     </p>
+
     <div class="divider"></div>
   </div>
 
+  <!-- REDIRECT FIRES WHEN LINE FINISHES -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const divider = document.querySelector(".divider");
+
+      if (divider) {
+        divider.addEventListener("animationend", () => {
+          window.location.href = "reveal.html";
+        });
+      }
+    });
+  </script>
 </body>
 </html>
