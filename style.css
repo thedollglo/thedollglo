@@ -1,139 +1,80 @@
-/* =========================
-   RESET
-========================= */
+/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* =========================
-   VIEWPORT FIX
-========================= */
+/* BASE */
 html, body {
   width: 100%;
   height: 100%;
-}
-
-body.black-bg {
   background: #000;
-  color: #fff;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-               Roboto, Helvetica, Arial, sans-serif;
-  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* =========================
-   TRUE CENTERING (MOBILE SAFE)
-========================= */
+/* LAYOUT */
+.black-bg {
+  background: #000;
+}
+
 .center-screen {
-  min-height: 100svh; /* Safari fix */
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* =========================
-   WRAPPER
-========================= */
+/* WRAPPER */
 .ack-wrapper {
   width: 100%;
-  max-width: 680px;
-  padding: 0 24px;
   text-align: center;
-
-  /* Optical correction */
-  transform: translateY(-4vh);
+  padding: 0 16px;
 }
 
-/* =========================
-   TITLE
-========================= */
+/* TITLE */
 .ack-title {
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  font-size: clamp(38px, 7.5vw, 72px);
-  line-height: 1.15;
-  margin-bottom: 18px;
+  color: #ffffff;
+  font-size: clamp(42px, 9vw, 96px);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  margin-bottom: 24px;
 }
 
-/* =========================
-   SUBTEXT
-========================= */
+/* SUBTEXT */
 .ack-sub {
+  color: #9a9a9a;
   font-size: 16px;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.75);
-  margin-bottom: 26px;
+  margin-bottom: 36px;
 }
 
-/* =========================
-   DIVIDER (PROGRESS LINE)
-========================= */
+/* HAIRLINE */
 .divider {
-  position: relative;
-  width: 140px;
+  width: 0;
   height: 1px;
   margin: 0 auto;
-  background: rgba(255, 255, 255, 0.25);
-  overflow: hidden;
+  background: rgba(255, 255, 255, 0.65);
+  animation: draw-line 3.2s ease-out forwards;
 }
 
-.divider::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 0%;
-  background: #fff;
-  animation: progressFill 4.2s linear forwards;
+/* LINE ANIMATION */
+@keyframes draw-line {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 160px;
+    opacity: 1;
+  }
 }
 
-/* =========================
-   FADE IN
-========================= */
+/* FADE IN */
 .fade-in {
-  animation: fadeIn 1.4s ease-out both;
+  animation: fadeIn 1.2s ease-out forwards;
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* =========================
-   PROGRESS ANIMATION
-========================= */
-@keyframes progressFill {
-  from {
-    width: 0%;
-  }
-  to {
-    width: 100%;
-  }
-}
-
-/* =========================
-   MOBILE TUNING
-========================= */
-@media (max-width: 480px) {
-  .ack-title {
-    letter-spacing: 0.14em;
-  }
-
-  .ack-sub {
-    font-size: 15px;
-  }
-
-  .ack-wrapper {
-    transform: translateY(-6vh);
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
